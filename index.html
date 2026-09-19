@@ -1,10 +1,89 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1,user-scalable=no">
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="Прокляття Онлайн — сатиричний розважальний проєкт.">
+  <title>Прокляття Онлайн</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main class="site">
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Меню" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <div class="menu-backdrop" id="menuBackdrop"></div>
+    <aside class="menu-panel" id="menuPanel" aria-hidden="true">
+      <div class="menu-title">ПРОКЛЯТТЯ ОНЛАЙН</div>
+      <button class="menu-link" type="button" data-screen="home">Головна</button>
+      <button class="menu-link" type="button" data-screen="ritual">Проклясти</button>
+      <p>Сатиричний розважальний проєкт. Не сприймайте ритуали буквально.</p>
+    </aside>
+
+    <section class="screen screen-home is-active" id="homeScreen">
+      <div class="home-copy">
+        <h1>ПРОКЛЯТТЯ ОНЛАЙН</h1>
+        <p class="lead">Одне натискання — і всесвіт усе владнає!</p>
+
+        <div class="home-actions">
+          <button class="action-btn action-red" id="openRitual" type="button">Проклясти</button>
+          <button class="action-btn action-gray" id="addEnergy" type="button">Підкинути енергію</button>
+        </div>
+
+        <div class="counter">Накладено заклять: <strong id="curseCounter">4 351</strong></div>
+      </div>
+
+      <div class="home-visual">
+        <div class="sigil-wrap" id="sigilWrap" style="--energy:.62">
+          <div class="sigil-glow"></div>
+          <img class="fire-photo" src="./assets/fire-reference.jpg" alt="">
+        </div>
+        <input class="energy-slider" id="energySlider" type="range" min="0" max="100" value="62" aria-label="Енергія">
+      </div>
+    </section>
+
+    <section class="screen screen-ritual" id="ritualScreen">
+      <div class="ritual-copy">
+        <div class="ritual-heading-row">
+          <span class="mini-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+          <h2>ПРОКЛЯТТЯ ОНЛАЙН</h2>
+        </div>
+        <p class="ritual-lead">Введіть імʼя, причину і покарання</p>
+
+        <form id="ritualForm" autocomplete="off">
+          <label class="field">
+            <span>Кого проклинаємо?</span>
+            <input id="who" type="text" maxlength="80">
+          </label>
+
+          <label class="field">
+            <span>Що вона(він) зробила(в)?</span>
+            <input id="why" type="text" maxlength="140">
+          </label>
+
+          <label class="field field-random">
+            <span>Яка кара?</span>
+            <div class="random-input">
+              <input id="punishment" type="text" maxlength="140">
+              <button id="randomPunishment" type="button" aria-label="Випадкова кара">↻</button>
+            </div>
+          </label>
+
+          <button class="curse-submit" type="submit">Проклясти</button>
+        </form>
+      </div>
+
+      <div class="cauldron-zone">
+        <div class="cauldron-halo"></div>
+        <img class="cauldron-photo" src="./assets/cauldron-reference.jpg" alt="">
         <div class="smoke-layer" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
       </div>
     </section>
 
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
   </main>
-
   <script src="./script.js"></script>
 </body>
 </html>
