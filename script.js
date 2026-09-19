@@ -112,7 +112,7 @@
     trace(g,mctx);
 
     // The burning band grows out from the physical sphere itself.
-    const hotWidth=10+burn*24;
+    const hotWidth=4+burn*17;
     mctx.strokeStyle='rgba(255,255,255,'+(0.20+burn*.80)+')';
     mctx.lineWidth=hotWidth;
     mctx.shadowBlur=burn*10;
@@ -127,8 +127,8 @@
 
     ctx.save();
     ctx.globalCompositeOperation='lighter';
-    ctx.globalAlpha=.10+burn*.90;
-    ctx.shadowBlur=4+burn*16;
+    ctx.globalAlpha=Math.pow(burn,1.35)*.88;
+    ctx.shadowBlur=2+burn*10;
     ctx.shadowColor='rgba(255,68,0,.92)';
     ctx.drawImage(fx,0,0,w,h);
     ctx.restore();
@@ -182,7 +182,6 @@
 
     // black stage, then a physical dark sphere
     ctx.fillStyle='#000';ctx.fillRect(0,0,w,h);
-    drawMetal(w,h,currentG,now/1000);
     maskedFire(w,h,currentG,now/1000);
     drawEmbers();
 
