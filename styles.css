@@ -161,3 +161,7 @@
   mix-blend-mode:normal!important;
 }
 .codeFireStage::after{display:none!important}
+
+/* v13 — exact reference states: charred sphere at zero, orange flame texture grows on it */
+.referenceDarkSphere{position:absolute;inset:4%;width:92%;height:92%;object-fit:contain;z-index:1;mix-blend-mode:screen;opacity:calc(.94 - var(--burn)*.48);filter:brightness(calc(.72 + var(--burn)*.18)) contrast(1.16)}
+.codeFireCanvas{z-index:3!important}
