@@ -2,17 +2,17 @@
 
 function setEnergy(){
   energy=+range.value/100;
-  const normalized=Math.max(0,(energy-.07)/.93);
-  burn=Math.pow(normalized,1.35);
-  const ember=.06+Math.pow(energy,.72)*.54;
-  const glow=Math.pow(burn,1.15);
+  const normalized=Math.max(0,(energy-.10)/.90);
+  burn=Math.pow(normalized,1.20);
+  const igniteRadius=(burn*78);
+  const metalHeat=Math.pow(Math.max(0,(energy-.03)/.97),1.6);
   stage.style.setProperty('--energy',energy.toFixed(3));
   stage.style.setProperty('--burn',burn.toFixed(3));
-  stage.style.setProperty('--ember',ember.toFixed(3));
-  stage.style.setProperty('--glow',glow.toFixed(3));
+  stage.style.setProperty('--igniteRadius',igniteRadius.toFixed(2)+'%');
+  stage.style.setProperty('--metalHeat',metalHeat.toFixed(3));
   if(video){
     video.playbackRate=.55+burn*.95;
-    if(burn<.015){video.pause();video.currentTime=0;}
+    if(burn<.01){video.pause();video.currentTime=0;}
     else video.play().catch(()=>{});
   }
 }
@@ -38,13 +38,14 @@ function frame(){
   });
   ctx.globalAlpha=1;
 
-  // ember shimmer stays on the symbol even when flame is almost out
-  if(energy<.18&&energy>.005){
-    const pulse=.45+.55*Math.sin(performance.now()/180);
+  // at zero the object stays visible but completely unlit; heat only appears as ignition starts
+  if(energy>.03&&energy<.22){
+    const pulse=.35+.65*Math.sin(performance.now()/210)*.5+.325;
     ctx.globalCompositeOperation='screen';
-    const g=ctx.createRadialGradient(w*.5,h*.56,0,w*.5,h*.56,w*.34);
-    g.addColorStop(0,'rgba(255,72,0,'+(energy*.10*pulse)+')');
-    g.addColorStop(.6,'rgba(180,20,0,'+(energy*.06*pulse)+')');
+    const g=ctx.createRadialGradient(w*.5,h*.55,0,w*.5,h*.55,w*.31);
+    const a=Math.max(0,(energy-.03)/.19);
+    g.addColorStop(0,'rgba(135,28,7,'+(a*.05*pulse)+')');
+    g.addColorStop(.72,'rgba(80,10,0,'+(a*.025*pulse)+')');
     g.addColorStop(1,'rgba(0,0,0,0)');
     ctx.fillStyle=g;ctx.fillRect(0,0,w,h);
     ctx.globalCompositeOperation='source-over';
