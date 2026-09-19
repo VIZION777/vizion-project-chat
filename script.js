@@ -47,11 +47,7 @@
     stage.style.setProperty('--burn',burn.toFixed(3));
     stage.style.setProperty('--energy',energy.toFixed(3));
     range.style.setProperty('--energy',energy.toFixed(3));
-    if(video){
-      video.playbackRate=.65+burn*.95;
-      if(burn<.015){video.pause();video.currentTime=0}
-      else video.play().catch(()=>{});
-    }
+    if(video){ video.pause(); }
   }
   range.oninput=setEnergy;
 
