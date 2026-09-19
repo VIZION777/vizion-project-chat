@@ -14,10 +14,8 @@
   <button class="pill red" id="goRitual">Проклясти</button>
   <button class="pill gray" id="addEnergy">Підкинути енергію</button>
   <p class="count">Накладено заклять: <b id="count">4 351</b></p>
-  <div class="fireStage" id="fireStage" style="--energy:.62">
-    <span class="fireGlow"></span>
-    <img class="fireSymbol" src="./assets/fire-reference.jpg" alt="">
-    <canvas class="fireCanvas" id="fireCanvas" aria-hidden="true"></canvas>
+  <div class="fireStage shaderStage" id="fireStage" style="--energy:.62">
+    <canvas class="shaderCanvas" id="fireCanvas" aria-hidden="true"></canvas>
   </div>
   <input class="range" id="range" type="range" min="0" max="100" value="62" aria-label="Енергія">
  </div>
