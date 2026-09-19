@@ -133,3 +133,31 @@
       drop-shadow(0 0 calc(2px + var(--burn)*10px) rgba(255,76,0,.90))!important;
   }
 }
+
+/* v12 — canvas masks real video strictly to the pentagram/ring, then grows flame outward */
+.darkSigil{display:none!important}
+.referenceFireVideo{
+  position:absolute!important;
+  width:2px!important;height:2px!important;
+  left:-9999px!important;top:-9999px!important;
+  opacity:0!important;
+  pointer-events:none!important;
+}
+.codeFireStage{
+  --burn:0;
+  overflow:visible!important;
+  background:#000!important;
+  box-shadow:none!important;
+}
+.codeFireCanvas{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  display:block!important;
+  z-index:3!important;
+  pointer-events:none!important;
+  filter:none!important;
+  mix-blend-mode:normal!important;
+}
+.codeFireStage::after{display:none!important}
