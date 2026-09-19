@@ -249,3 +249,89 @@
 }
 .codeFireCanvas{z-index:3!important;opacity:calc(var(--burn)*.32)!important}
 .codeFireStage:before{z-index:1!important;opacity:var(--burn)!important}
+
+/* v20 — clear animation: the actual fire video is visible on top of the unlit sphere */
+.codeFireStage{
+  --burn:0;
+  --energy:0;
+  position:relative!important;
+  width:430px!important;
+  max-width:88vw!important;
+  aspect-ratio:1!important;
+  margin:20px auto 6px!important;
+  overflow:visible!important;
+  background:transparent!important;
+  isolation:isolate!important;
+}
+.sphereOff{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center!important;
+  z-index:1!important;
+  opacity:calc(1 - var(--burn)*.88)!important;
+  mix-blend-mode:normal!important;
+  filter:brightness(calc(.42 + var(--burn)*.22)) contrast(1.25) saturate(.48)!important;
+}
+.referenceDarkSphere{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center!important;
+  z-index:2!important;
+  opacity:calc(var(--burn)*.55)!important;
+  mix-blend-mode:screen!important;
+  filter:saturate(1.1) contrast(1.16) brightness(calc(.50 + var(--burn)*.46))!important;
+}
+.referenceFireVideo{
+  position:absolute!important;
+  inset:-4%!important;
+  left:-4%!important;
+  top:-4%!important;
+  width:108%!important;
+  height:108%!important;
+  z-index:4!important;
+  display:block!important;
+  object-fit:cover!important;
+  object-position:center!important;
+  pointer-events:none!important;
+  opacity:calc(var(--burn)*.98)!important;
+  mix-blend-mode:screen!important;
+  clip-path:none!important;
+  -webkit-clip-path:none!important;
+  transform:scale(calc(.985 + var(--burn)*.035))!important;
+  transform-origin:50% 54%!important;
+  filter:
+    saturate(calc(1.15 + var(--burn)*1.10))
+    contrast(calc(1.18 + var(--burn)*.18))
+    brightness(calc(.58 + var(--burn)*.92))
+    drop-shadow(0 0 calc(4px + var(--burn)*14px) rgba(255,75,0,.92))!important;
+}
+.codeFireCanvas{
+  z-index:5!important;
+  inset:-6%!important;
+  width:112%!important;
+  height:112%!important;
+  opacity:calc(var(--burn)*.14)!important;
+  mix-blend-mode:screen!important;
+}
+.codeFireStage:before{
+  content:""!important;
+  position:absolute!important;
+  z-index:0!important;
+  inset:8%!important;
+  border-radius:50%!important;
+  opacity:var(--burn)!important;
+  background:radial-gradient(circle,rgba(255,112,20,.18),rgba(255,42,0,.08) 48%,transparent 72%)!important;
+  filter:blur(24px)!important;
+  pointer-events:none!important;
+}
+@media(max-width:620px){
+  .codeFireStage{width:min(88vw,365px)!important;max-width:365px!important;margin:18px auto 4px!important}
+  .referenceFireVideo{inset:-5%!important;left:-5%!important;top:-5%!important;width:110%!important;height:110%!important}
+  .range{width:88%!important;margin:0 auto 24px!important}
+}
