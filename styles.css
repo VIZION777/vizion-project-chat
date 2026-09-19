@@ -64,3 +64,45 @@ animation:embersRise 1.2s linear infinite;mix-blend-mode:screen}
  .fireSymbol{inset:5%!important;width:90%!important;height:90%!important}
  .fireGlow{inset:13%!important}
 }
+
+/* v6 WebGL procedural fire — pure code */
+.shaderStage{
+  position:relative!important;
+  width:390px!important;
+  max-width:78vw!important;
+  aspect-ratio:1/1!important;
+  margin:24px auto 12px!important;
+  overflow:visible!important;
+  background:#000!important;
+  isolation:isolate!important;
+}
+.shaderStage::before{
+  content:"";
+  position:absolute;
+  inset:13%;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(255,88,0,calc(.06 + var(--energy)*.22)),rgba(255,25,0,calc(.03 + var(--energy)*.12)) 48%,transparent 73%);
+  filter:blur(calc(18px + var(--energy)*18px));
+  pointer-events:none;
+}
+.shaderCanvas{
+  position:absolute!important;
+  inset:0!important;
+  z-index:3!important;
+  width:100%!important;
+  height:100%!important;
+  display:block!important;
+  background:transparent!important;
+  mix-blend-mode:screen!important;
+}
+.shaderStage>.fireGlow,.shaderStage>.fireSymbol,.shaderStage>.fireCanvas:not(.shaderCanvas),
+.shaderStage>.fire,.shaderStage>.liveFlames,.shaderStage>.embers{display:none!important}
+@media(max-width:620px){
+  .shaderStage{
+    width:min(78vw,320px)!important;
+    max-width:320px!important;
+    height:auto!important;
+    margin:18px auto 18px!important;
+  }
+  .range{width:92%!important;margin:0 auto 18px!important}
+}
