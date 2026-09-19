@@ -78,3 +78,58 @@
       drop-shadow(0 0 calc(2px + var(--glow)*13px) rgba(255,78,0,.94))!important;
   }
 }
+
+/* v11 — unlit sphere first, then the sphere itself catches fire */
+.codeFireStage{
+  --burn:0;
+  --igniteRadius:0%;
+  --metalHeat:0;
+  overflow:visible!important;
+  background:#000!important;
+}
+.darkSigil{
+  position:absolute;
+  inset:4%;
+  width:92%;
+  height:92%;
+  z-index:1;
+  opacity:1;
+  filter:
+    brightness(calc(.72 + var(--metalHeat)*.32))
+    drop-shadow(0 0 calc(1px + var(--metalHeat)*8px) rgba(120,24,8,calc(.18 + var(--metalHeat)*.34)));
+}
+.darkSigil circle,.darkSigil path{
+  stroke-opacity:calc(.62 + var(--metalHeat)*.30);
+}
+.referenceFireStill{display:none!important}
+.referenceFireVideo{
+  z-index:2!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:contain!important;
+  opacity:calc(.10 + var(--burn)*.90)!important;
+  clip-path:circle(var(--igniteRadius) at 50% 55%)!important;
+  -webkit-clip-path:circle(var(--igniteRadius) at 50% 55%)!important;
+  mix-blend-mode:screen!important;
+  filter:
+    saturate(calc(1.25 + var(--burn)*1.35))
+    contrast(calc(1.22 + var(--burn)*.22))
+    brightness(calc(.72 + var(--burn)*.95))
+    drop-shadow(0 0 calc(2px + var(--burn)*12px) rgba(255,75,0,.88))!important;
+  transform:scale(1.015)!important;
+  transition:clip-path .08s linear,-webkit-clip-path .08s linear,opacity .08s linear,filter .08s linear;
+}
+.codeFireStage::after{
+  display:none!important;
+}
+@media(max-width:620px){
+  .darkSigil{inset:3%;width:94%;height:94%}
+  .referenceFireVideo{
+    filter:
+      saturate(calc(1.30 + var(--burn)*1.48))
+      contrast(calc(1.24 + var(--burn)*.24))
+      brightness(calc(.74 + var(--burn)*.98))
+      drop-shadow(0 0 calc(2px + var(--burn)*10px) rgba(255,76,0,.90))!important;
+  }
+}
