@@ -14,7 +14,6 @@
   const punishment = document.getElementById('punishment');
   const form = document.getElementById('ritualForm');
   const toast = document.getElementById('toast');
-  const acceptMagic = document.getElementById('acceptMagic');
 
   const punishments = [
     'Щоб Wi-Fi ловив тільки біля роутера',
@@ -43,8 +42,7 @@
   function updateEnergy(value) {
     const v = Math.max(0, Math.min(100, Number(value) || 0));
     sigil.style.setProperty('--energy', String(v / 100));
-    const scale = 0.96 + (v / 100) * 0.08;
-    sigil.style.transform = `scale(${scale})`;
+    sigil.style.transform = `scale(${0.96 + (v / 100) * 0.08})`;
   }
 
   function go(screen) {
@@ -97,11 +95,9 @@
     e.preventDefault();
     const who = document.getElementById('who').value.trim() || 'Невідомий персонаж';
     setCount(currentCount() + 1);
-
     site.classList.remove('ritual-running');
     void site.offsetWidth;
     site.classList.add('ritual-running');
-
     showToast(`Ритуал для «${who}» запущено`);
     setTimeout(() => site.classList.remove('ritual-running'), 2400);
   });
@@ -113,16 +109,10 @@
   menuBackdrop.addEventListener('click', closeMenu);
 
   document.querySelectorAll('[data-screen]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      go(btn.dataset.screen === 'home' ? home : ritual);
-    });
+    btn.addEventListener('click', () => go(btn.dataset.screen === 'home' ? home : ritual));
   });
 
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') closeMenu();
-  });
-
-  acceptMagic.addEventListener('click', () => {
-    acceptMagic.closest('.magic-banner').style.display = 'none';
   });
 })();
