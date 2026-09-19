@@ -224,3 +224,14 @@
 .referenceDarkSphere{object-fit:contain!important;background:transparent!important;clip-path:circle(44% at 50% 50%)!important}
 .codeFireStage{background:#000!important;box-shadow:none!important}
 .codeFireStage:after{content:none!important}
+
+/* v18 — use the exact premium generated pentagram crop on the live site */
+.codeFireStage{width:430px!important;max-width:88vw!important;margin:20px auto 4px!important;aspect-ratio:1!important;overflow:visible!important;background:transparent!important}
+.referenceDarkSphere{
+ inset:-2%!important;width:104%!important;height:104%!important;object-fit:contain!important;clip-path:none!important;mix-blend-mode:screen!important;
+ opacity:calc(.22 + var(--burn)*.78)!important;
+ filter:grayscale(calc(1 - var(--burn)*.96)) saturate(calc(.18 + var(--burn)*1.35)) brightness(calc(.18 + var(--burn)*.82)) contrast(1.28) drop-shadow(0 0 calc(var(--burn)*18px) rgba(255,70,0,.72))!important;
+}
+.codeFireCanvas{inset:-5%!important;width:110%!important;height:110%!important;opacity:calc(.08 + var(--burn)*.42)!important}
+.codeFireStage:before{inset:7%!important}
+@media(max-width:620px){.codeFireStage{width:min(88vw,365px)!important;max-width:365px!important;margin:18px auto 2px!important}.referenceDarkSphere{inset:-1%!important;width:102%!important;height:102%!important}.codeFireCanvas{inset:-4%!important;width:108%!important;height:108%!important}}
