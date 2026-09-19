@@ -1,6 +1,6 @@
 (()=> {
   const $=s=>document.querySelector(s);
-  const home=$('#home'),ritual=$('#ritual'),drawer=$('#drawer'),shade=$('#shade'),menu=$('#menuToggle');
+  const home=$('#home'),ritual=$('#ritual'),casting=$('#casting'),certificate=$('#certificate'),drawer=$('#drawer'),shade=$('#shade'),menu=$('#menuToggle');
   const count=$('#count'),range=$('#range'),stage=$('#fireStage'),video=$('#fireVideo'),canvas=$('#fireCanvas'),toast=$('#toast');
   const ctx=canvas.getContext('2d',{alpha:true});
   const tex=document.createElement('canvas'),mask=document.createElement('canvas'),outer=document.createElement('canvas'),outerMask=document.createElement('canvas');
@@ -9,16 +9,19 @@
 
   const punishments=['Щоб Wi-Fi ловив тільки біля роутера','Щоб кава завжди остигала за 30 секунд','Щоб зарядка зникала саме коли треба','Щоб будильник дзвонив у вихідний','Щоб після прання губилась одна шкарпетка'];
   function close(){drawer.classList.remove('open');shade.classList.remove('open')}
-  function show(x){home.classList.remove('active');ritual.classList.remove('active');x.classList.add('active');close();scrollTo(0,0);setTimeout(resize,40)}
+  function show(x){[home,ritual,casting,certificate].forEach(v=>v&&v.classList.remove('active'));x.classList.add('active');close();scrollTo(0,0);setTimeout(resize,40)}
   function n(){return parseInt(count.textContent.replace(/\s/g,''),10)||4351}
   function setN(v){count.textContent=new Intl.NumberFormat('uk-UA').format(v)}
   function note(t){toast.textContent=t;toast.classList.add('show');clearTimeout(window.__toast);window.__toast=setTimeout(()=>toast.classList.remove('show'),1800)}
   $('#goRitual').onclick=()=>show(ritual);
   $('#addEnergy').onclick=()=>{range.value=Math.min(100,+range.value+12);setEnergy();setN(n()+1);note('Енергію підкинуто')};
   $('#random').onclick=()=>$('#punishment').value=punishments[Math.floor(Math.random()*punishments.length)];
-  $('#ritualForm').onsubmit=e=>{e.preventDefault();setN(n()+1);note('Ритуал запущено')};
+  $('#ritualForm').onsubmit=e=>{e.preventDefault();const who=$('#who').value.trim(),why=$('#why').value.trim(),pun=$('#punishment').value.trim();if(!who||!why||!pun){note('Заповніть усі три поля');return}setN(n()+1);show(casting);$('#castingText').textContent=who+' — ритуал уже запущено…';setTimeout(()=>{$('#certWho').textContent=who;$('#certWhy').textContent=why;$('#certPunishment').textContent=pun;$('#certNumber').textContent='PX-'+Date.now().toString().slice(-8);show(certificate)},3300)};
   menu.onclick=()=>{drawer.classList.toggle('open');shade.classList.toggle('open')};shade.onclick=close;
   document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>show(b.dataset.go==='home'?home:ritual));
+  $('#again').onclick=()=>show(ritual);
+  $('#undoCurse').onclick=()=>{show(home);note('Прокляття скасовано')};
+  $('#shareCert').onclick=async()=>{const text='Прокляття Онлайн — сертифікат № '+$('#certNumber').textContent;try{if(navigator.share)await navigator.share({title:'Прокляття Онлайн',text,url:location.href});else{await navigator.clipboard.writeText(text+' '+location.href);note('Посилання скопійовано')}}catch(e){}};
 
   function setEnergy(){
     energy=+range.value/100;
