@@ -165,3 +165,38 @@
 /* v13 — exact reference states: charred sphere at zero, orange flame texture grows on it */
 .referenceDarkSphere{position:absolute;inset:4%;width:92%;height:92%;object-fit:contain;z-index:1;mix-blend-mode:screen;opacity:calc(.94 - var(--burn)*.48);filter:brightness(calc(.72 + var(--burn)*.18)) contrast(1.16)}
 .codeFireCanvas{z-index:3!important}
+
+/* v14 — reference placement + fire wrapping the sphere, not filling its centre */
+.codeFireStage{
+  width:360px!important;
+  max-width:76vw!important;
+  margin:34px auto 10px!important;
+  aspect-ratio:1!important;
+  overflow:visible!important;
+}
+.referenceDarkSphere{
+  inset:2%!important;
+  width:96%!important;
+  height:96%!important;
+  opacity:calc(.98 - var(--burn)*.18)!important;
+  filter:
+    brightness(calc(.62 + var(--burn)*.18))
+    contrast(1.24)
+    saturate(calc(.62 + var(--burn)*.22))!important;
+}
+.codeFireCanvas{
+  inset:-10% -8% -8% -8%!important;
+  width:116%!important;
+  height:118%!important;
+}
+@media(max-width:620px){
+  .codeFireStage{
+    width:min(74vw,305px)!important;
+    max-width:305px!important;
+    margin:38px auto 8px!important;
+  }
+  .range{
+    width:86%!important;
+    margin:0 auto 26px!important;
+  }
+}
