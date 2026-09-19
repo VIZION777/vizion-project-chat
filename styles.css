@@ -219,3 +219,8 @@
 .codeFireCanvas{z-index:4!important;inset:-10%!important;width:120%!important;height:120%!important;mix-blend-mode:screen!important;background:transparent!important}
 .codeFireStage:before{content:"";position:absolute;z-index:1;inset:12%;border-radius:50%;background:radial-gradient(circle,rgba(255,105,12,calc(var(--burn)*.20)),rgba(255,36,0,calc(var(--burn)*.08)) 48%,transparent 72%);filter:blur(24px);pointer-events:none}
 @media(max-width:620px){.codeFireStage{width:min(82vw,340px)!important;max-width:340px!important;margin:26px auto 6px!important}.codeFireCanvas{inset:-9%!important;width:118%!important;height:118%!important}}
+
+/* v17 hotfix — never use the full UI reference screenshot as the sphere texture */
+.referenceDarkSphere{object-fit:contain!important;background:transparent!important;clip-path:circle(44% at 50% 50%)!important}
+.codeFireStage{background:#000!important;box-shadow:none!important}
+.codeFireStage:after{content:none!important}
