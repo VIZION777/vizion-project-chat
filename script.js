@@ -48,8 +48,8 @@
     stage.style.setProperty('--energy',energy.toFixed(3));
     range.style.setProperty('--energy',energy.toFixed(3));
     if(video){
-      video.playbackRate=.70+burn*.55;
-      if(burn<.01){video.pause();video.currentTime=0}
+      video.playbackRate=.65+burn*.95;
+      if(burn<.015){video.pause();video.currentTime=0}
       else video.play().catch(()=>{});
     }
   }
