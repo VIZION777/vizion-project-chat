@@ -10,7 +10,6 @@
 </head>
 <body>
   <main class="site">
-
     <button class="menu-toggle" id="menuToggle" type="button" aria-label="Меню" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -39,7 +38,6 @@
       <div class="home-visual">
         <div class="sigil-wrap" id="sigilWrap" style="--energy:.62">
           <div class="sigil-glow"></div>
-
           <svg class="fire-sigil" viewBox="0 0 600 600" aria-hidden="true">
             <defs>
               <radialGradient id="fireStroke" cx="50%" cy="38%">
@@ -48,18 +46,13 @@
                 <stop offset=".72" stop-color="#e85a10"/>
                 <stop offset="1" stop-color="#541102"/>
               </radialGradient>
-
               <filter id="roughFire" x="-50%" y="-50%" width="200%" height="200%">
                 <feTurbulence type="fractalNoise" baseFrequency=".018" numOctaves="4" seed="9" result="noise"/>
                 <feDisplacementMap in="SourceGraphic" in2="noise" scale="13" xChannelSelector="R" yChannelSelector="G"/>
               </filter>
-
               <filter id="fireGlow" x="-80%" y="-80%" width="260%" height="260%">
                 <feGaussianBlur stdDeviation="10" result="blur"/>
-                <feMerge>
-                  <feMergeNode in="blur"/>
-                  <feMergeNode in="SourceGraphic"/>
-                </feMerge>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
               </filter>
             </defs>
 
@@ -80,26 +73,10 @@
               <path d="M300 92 L350 246 L512 246 L381 340 L431 494 L300 399 L169 494 L219 340 L88 246 L250 246 Z"
                     fill="none" stroke="#ff8d24" stroke-opacity=".48" stroke-width="12" stroke-linejoin="round" stroke-dasharray="24 16"/>
             </g>
-
-            <g class="flame-flares">
-              <ellipse cx="300" cy="92" rx="30" ry="78" fill="#ff6a10"/>
-              <ellipse cx="512" cy="246" rx="26" ry="70" fill="#ff6a10" transform="rotate(74 512 246)"/>
-              <ellipse cx="431" cy="494" rx="25" ry="68" fill="#ff6a10" transform="rotate(145 431 494)"/>
-              <ellipse cx="169" cy="494" rx="25" ry="68" fill="#ff6a10" transform="rotate(-145 169 494)"/>
-              <ellipse cx="88" cy="246" rx="26" ry="70" fill="#ff6a10" transform="rotate(-74 88 246)"/>
-            </g>
           </svg>
         </div>
 
         <input class="energy-slider" id="energySlider" type="range" min="0" max="100" value="62" aria-label="Енергія">
-      </div>
-
-      <div class="magic-banner">
-        <div>
-          <strong>МАГІЧНІ КРУГИ ТА СЛІДИ</strong>
-          <span>Ми підсилимо вам гарну кулю, щоб закляття долітали точно в ціль, а сайт не перетворився на гарбуз.</span>
-        </div>
-        <button type="button" id="acceptMagic">Прийняти</button>
       </div>
     </section>
 
@@ -166,7 +143,6 @@
               <stop offset="1" stop-color="#000"/>
             </radialGradient>
           </defs>
-
           <ellipse cx="350" cy="180" rx="246" ry="61" fill="#101014"/>
           <path d="M113 183C120 165 169 147 231 139C302 130 399 131 473 143C537 154 582 170 586 187C590 206 548 222 486 233C400 249 299 249 215 236C152 227 107 207 113 183Z" fill="url(#potRim)"/>
           <ellipse cx="350" cy="187" rx="214" ry="45" fill="url(#potInside)"/>
@@ -181,9 +157,7 @@
           <circle cx="133" cy="326" r="8" fill="#111116"/>
         </svg>
 
-        <div class="smoke-layer" aria-hidden="true">
-          <i></i><i></i><i></i><i></i><i></i>
-        </div>
+        <div class="smoke-layer" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
       </div>
     </section>
 
