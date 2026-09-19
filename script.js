@@ -65,7 +65,7 @@
   }
 
   function geom(w,h){
-    const cx=w*.5,cy=h*.52,R=Math.min(w,h)*.285;
+    const cx=w*.5,cy=h*.54,R=Math.min(w,h)*.315;
     const P=[];
     for(let i=0;i<5;i++){
       const a=-Math.PI/2+i*Math.PI*2/5;
@@ -135,7 +135,7 @@
 
     ctx.save();
     ctx.globalCompositeOperation='lighter';
-    ctx.globalAlpha=Math.max(0,(burn-.06)/.94)*.48;
+    ctx.globalAlpha=Math.max(0,(burn-.18)/.82)*.30;
     ctx.shadowBlur=2+burn*7;
     ctx.shadowColor='rgba(255,75,0,.82)';
     ctx.drawImage(tex,0,0,w,h);
@@ -156,7 +156,7 @@
 
     ctx.save();
     ctx.globalCompositeOperation='screen';
-    ctx.globalAlpha=Math.max(0,(burn-.18)/.82)*.28;
+    ctx.globalAlpha=Math.max(0,(burn-.30)/.70)*.18;
     ctx.filter='blur('+(burn*.55)+'px)';
     ctx.drawImage(outer,0,0,w,h);
     ctx.restore();
