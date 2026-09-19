@@ -2,7 +2,7 @@
 <html lang="uk"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#000"><title>Прокляття Онлайн</title>
-<link rel="stylesheet" href="./styles.css?v=10"></head><body>
+<link rel="stylesheet" href="./styles.css?v=11"></head><body>
 <main class="app">
 <button class="hamburger" id="menuToggle" type="button" aria-label="Меню"><span></span><span></span><span></span></button>
 <div class="shade" id="shade"></div><aside class="drawer" id="drawer"><button data-go="home">Головна</button><button data-go="ritual">Проклясти</button></aside>
@@ -15,7 +15,26 @@
   <button class="pill gray" id="addEnergy">Підкинути енергію</button>
   <p class="count">Накладено заклять: <b id="count">4 351</b></p>
   <div class="fireStage codeFireStage" id="fireStage" style="--energy:.62">
-    <video class="referenceFireVideo" id="fireVideo" src="./assets/fire-loop.mp4?v=9" autoplay muted loop playsinline preload="auto"></video><img class="referenceFireStill" src="./assets/fire-reference.jpg?v=9" alt=""><canvas class="codeFireCanvas" id="fireCanvas" aria-hidden="true"></canvas>
+    <svg class="darkSigil" viewBox="0 0 600 600" aria-hidden="true">
+  <defs>
+    <radialGradient id="iron" cx="45%" cy="38%">
+      <stop offset="0" stop-color="#2a2422"/>
+      <stop offset=".55" stop-color="#151313"/>
+      <stop offset="1" stop-color="#080808"/>
+    </radialGradient>
+    <filter id="roughIron" x="-30%" y="-30%" width="160%" height="160%">
+      <feTurbulence type="fractalNoise" baseFrequency=".018" numOctaves="3" seed="12" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="5"/>
+    </filter>
+  </defs>
+  <g filter="url(#roughIron)">
+    <circle cx="300" cy="305" r="214" fill="none" stroke="url(#iron)" stroke-width="34"/>
+    <path d="M300 92 L350 246 L512 246 L381 340 L431 494 L300 399 L169 494 L219 340 L88 246 L250 246 Z"
+      fill="none" stroke="url(#iron)" stroke-width="36" stroke-linejoin="round"/>
+  </g>
+</svg>
+<video class="referenceFireVideo" id="fireVideo" src="./assets/fire-loop.mp4?v=11" autoplay muted loop playsinline preload="auto"></video>
+<canvas class="codeFireCanvas" id="fireCanvas" aria-hidden="true"></canvas>
   </div>
   <input class="range" id="range" type="range" min="0" max="100" value="62" aria-label="Енергія">
  </div>
@@ -37,4 +56,4 @@
  </div>
 </section>
 <div class="toast" id="toast"></div>
-</main><script src="./script.js?v=10"></script></body></html>
+</main><script src="./script.js?v=11"></script></body></html>
