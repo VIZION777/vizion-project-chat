@@ -235,3 +235,17 @@
 .codeFireCanvas{inset:-5%!important;width:110%!important;height:110%!important;opacity:calc(.08 + var(--burn)*.42)!important}
 .codeFireStage:before{inset:7%!important}
 @media(max-width:620px){.codeFireStage{width:min(88vw,365px)!important;max-width:365px!important;margin:18px auto 2px!important}.referenceDarkSphere{inset:-1%!important;width:102%!important;height:102%!important}.codeFireCanvas{inset:-4%!important;width:108%!important;height:108%!important}}
+
+/* v19 — true OFF -> FIRE slider. Same sphere, two photographic states. */
+.codeFireStage{--burn:0;position:relative!important;background:#000!important;overflow:hidden!important}
+.sphereOff,.referenceDarkSphere{
+ position:absolute!important;z-index:2!important;inset:0!important;width:100%!important;height:100%!important;
+ object-fit:cover!important;object-position:center!important;clip-path:none!important;mix-blend-mode:normal!important;
+}
+.sphereOff{opacity:calc(1 - var(--burn)*.72)!important;filter:brightness(calc(.48 + var(--burn)*.22)) contrast(1.25) saturate(.55)!important}
+.referenceDarkSphere{
+ opacity:var(--burn)!important;
+ filter:saturate(calc(.82 + var(--burn)*.38)) brightness(calc(.55 + var(--burn)*.45)) contrast(1.14)!important;
+}
+.codeFireCanvas{z-index:3!important;opacity:calc(var(--burn)*.32)!important}
+.codeFireStage:before{z-index:1!important;opacity:var(--burn)!important}
