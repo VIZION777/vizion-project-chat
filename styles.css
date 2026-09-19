@@ -200,3 +200,10 @@
     margin:0 auto 26px!important;
   }
 }
+
+/* v15 — cinematic generated-look fire: charred metal stays visible while flames rise off every edge */
+.codeFireStage{width:390px!important;max-width:82vw!important;margin:30px auto 8px!important;overflow:visible!important}
+.referenceDarkSphere{inset:7%!important;width:86%!important;height:86%!important;opacity:calc(.98 - var(--burn)*.08)!important;filter:brightness(calc(.52 + var(--burn)*.34)) contrast(1.32) saturate(calc(.48 + var(--burn)*.72)) drop-shadow(0 0 calc(var(--burn)*10px) rgba(255,65,0,.55))!important}
+.codeFireCanvas{inset:-18% -16% -14%!important;width:132%!important;height:132%!important}
+.range{background:linear-gradient(90deg,#cfd1d5 0%,#cfd1d5 calc(var(--energy, .62)*100%),#d6d7d9 calc(var(--energy, .62)*100%))!important}
+@media(max-width:620px){.codeFireStage{width:min(82vw,340px)!important;max-width:340px!important;margin:28px auto 4px!important}.referenceDarkSphere{inset:6%!important;width:88%!important;height:88%!important}.codeFireCanvas{inset:-17% -15% -13%!important;width:130%!important;height:130%!important}}
