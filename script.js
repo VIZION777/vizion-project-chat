@@ -45,6 +45,8 @@
     energy=+range.value/100;
     burn=Math.pow(Math.max(0,(energy-.08)/.92),1.08);
     stage.style.setProperty('--burn',burn.toFixed(3));
+    stage.style.setProperty('--energy',energy.toFixed(3));
+    range.style.setProperty('--energy',energy.toFixed(3));
     if(video){
       video.playbackRate=.70+burn*.55;
       if(burn<.01){video.pause();video.currentTime=0}
@@ -63,7 +65,7 @@
   }
 
   function geom(w,h){
-    const cx=w*.5,cy=h*.56,R=Math.min(w,h)*.305;
+    const cx=w*.5,cy=h*.54,R=Math.min(w,h)*.255;
     const P=[];
     for(let i=0;i<5;i++){
       const a=-Math.PI/2+i*Math.PI*2/5;
@@ -125,7 +127,7 @@
     tctx.restore();
 
     // core: fire lives ON the ring/star strokes
-    buildMask(cctx,w,h,g,7+burn*13,.25+burn*.75,'progress');
+    buildMask(cctx,w,h,g,5+burn*12,.18+burn*.82,'progress');
     tctx.save();
     tctx.globalCompositeOperation='destination-in';
     tctx.drawImage(coreMask,0,0,w,h);
@@ -146,7 +148,7 @@
     drawVideoCover(octx,w,h,0,-(4+burn*14),1.035+burn*.045);
     octx.restore();
 
-    buildMask(hctx,w,h,g,18+burn*24,.18+burn*.52,'progress');
+    buildMask(hctx,w,h,g,14+burn*20,.12+burn*.48,'progress');
     octx.save();
     octx.globalCompositeOperation='destination-in';
     octx.drawImage(haloMask,0,0,w,h);
@@ -154,7 +156,7 @@
 
     ctx.save();
     ctx.globalCompositeOperation='screen';
-    ctx.globalAlpha=Math.max(0,(burn-.10)/.90)*.62;
+    ctx.globalAlpha=Math.max(0,(burn-.08)/.92)*.48;
     ctx.filter='blur('+(burn*.55)+'px)';
     ctx.drawImage(outer,0,0,w,h);
     ctx.restore();
