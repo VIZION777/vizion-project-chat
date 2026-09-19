@@ -207,3 +207,15 @@
 .codeFireCanvas{inset:-18% -16% -14%!important;width:132%!important;height:132%!important}
 .range{background:linear-gradient(90deg,#cfd1d5 0%,#cfd1d5 calc(var(--energy, .62)*100%),#d6d7d9 calc(var(--energy, .62)*100%))!important}
 @media(max-width:620px){.codeFireStage{width:min(82vw,340px)!important;max-width:340px!important;margin:28px auto 4px!important}.referenceDarkSphere{inset:6%!important;width:88%!important;height:88%!important}.codeFireCanvas{inset:-17% -15% -13%!important;width:130%!important;height:130%!important}}
+
+/* v16 — final compositing architecture: premium generated sphere is the visual source of truth */
+.codeFireStage{width:390px!important;max-width:82vw!important;margin:30px auto 8px!important;background:transparent!important;overflow:visible!important;isolation:isolate}
+.referenceDarkSphere{
+  z-index:2!important;inset:0!important;width:100%!important;height:100%!important;object-fit:contain!important;
+  mix-blend-mode:screen!important;
+  opacity:1!important;
+  filter:grayscale(calc(1 - var(--burn)*.92)) saturate(calc(.12 + var(--burn)*1.48)) brightness(calc(.17 + var(--burn)*.83)) contrast(calc(1.38 - var(--burn)*.08)) drop-shadow(0 0 calc(var(--burn)*13px) rgba(255,72,0,.72))!important;
+}
+.codeFireCanvas{z-index:4!important;inset:-10%!important;width:120%!important;height:120%!important;mix-blend-mode:screen!important;background:transparent!important}
+.codeFireStage:before{content:"";position:absolute;z-index:1;inset:12%;border-radius:50%;background:radial-gradient(circle,rgba(255,105,12,calc(var(--burn)*.20)),rgba(255,36,0,calc(var(--burn)*.08)) 48%,transparent 72%);filter:blur(24px);pointer-events:none}
+@media(max-width:620px){.codeFireStage{width:min(82vw,340px)!important;max-width:340px!important;margin:26px auto 6px!important}.codeFireCanvas{inset:-9%!important;width:118%!important;height:118%!important}}
