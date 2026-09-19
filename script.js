@@ -76,12 +76,12 @@
     tctx.filter='saturate('+(1.15+burn*1.05)+') contrast('+(1.14+burn*.24)+') brightness('+(0.92+burn*.95)+')';
     drawVideo(tctx,w,h,-burn*4,1.03);
     tctx.restore();
-    buildMask(mctx,w,h,g,8+burn*16,.35+burn*.65);
+    buildMask(mctx,w,h,g,13+burn*20,.55+burn*.45);
     tctx.save();tctx.globalCompositeOperation='destination-in';tctx.drawImage(mask,0,0,w,h);tctx.restore();
 
     ctx.save();
     ctx.globalCompositeOperation='lighter';
-    ctx.globalAlpha=.22+burn*.78;
+    ctx.globalAlpha=.55+burn*.45;
     ctx.shadowBlur=5+burn*14;ctx.shadowColor='rgba(255,72,0,.95)';
     ctx.drawImage(tex,0,0,w,h);
     ctx.restore();
@@ -91,12 +91,12 @@
     octx.filter='saturate('+(1.25+burn*1.25)+') contrast(1.2) brightness('+(1.0+burn*1.0)+')';
     drawVideo(octx,w,h,-(8+burn*18),1.06+burn*.05);
     octx.restore();
-    buildMask(omctx,w,h,g,18+burn*28,.22+burn*.48);
+    buildMask(omctx,w,h,g,28+burn*34,.38+burn*.52);
     octx.save();octx.globalCompositeOperation='destination-in';octx.drawImage(outerMask,0,0,w,h);octx.restore();
 
     ctx.save();
     ctx.globalCompositeOperation='screen';
-    ctx.globalAlpha=Math.max(0,(burn-.12)/.88)*.72;
+    ctx.globalAlpha=Math.max(0,(burn-.04)/.96)*.96;
     ctx.filter='blur('+(burn*.45)+'px)';
     ctx.drawImage(outer,0,0,w,h);
     ctx.restore();
