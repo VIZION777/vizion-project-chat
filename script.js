@@ -43,7 +43,7 @@
 
   function setEnergy(){
     energy=+range.value/100;
-    burn=Math.pow(Math.max(0,(energy-.08)/.92),1.08);
+    burn=Math.pow(Math.max(0,energy),1.18);
     stage.style.setProperty('--burn',burn.toFixed(3));
     stage.style.setProperty('--energy',energy.toFixed(3));
     range.style.setProperty('--energy',energy.toFixed(3));
