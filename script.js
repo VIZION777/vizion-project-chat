@@ -11,17 +11,20 @@
   function close(){drawer.classList.remove('open');shade.classList.remove('open')}
   function show(x){[home,ritual,casting,certificate].forEach(v=>v&&v.classList.remove('active'));x.classList.add('active');close();scrollTo(0,0);setTimeout(resize,40)}
   function n(){return parseInt(count.textContent.replace(/\s/g,''),10)||4351}
-  function setN(v){count.textContent=new Intl.NumberFormat('uk-UA').format(v)}
+  function setN(v){count.textContent=new Intl.NumberFormat('uk-UA').format(v);try{localStorage.setItem('curseCount',String(v))}catch(e){}}
+  try{const savedCount=parseInt(localStorage.getItem('curseCount')||'',10);if(savedCount>4351)count.textContent=new Intl.NumberFormat('uk-UA').format(savedCount);const savedEnergy=Number(localStorage.getItem('curseEnergy'));if(Number.isFinite(savedEnergy)&&savedEnergy>=0&&savedEnergy<=100)range.value=String(savedEnergy)}catch(e){}
   function note(t){toast.textContent=t;toast.classList.add('show');clearTimeout(window.__toast);window.__toast=setTimeout(()=>toast.classList.remove('show'),1800)}
   $('#goRitual').onclick=()=>show(ritual);
   $('#addEnergy').onclick=()=>{range.value=Math.min(100,+range.value+12);setEnergy();setN(n()+1);note('Енергію підкинуто')};
   $('#random').onclick=()=>$('#punishment').value=punishments[Math.floor(Math.random()*punishments.length)];
-  $('#ritualForm').onsubmit=e=>{e.preventDefault();const who=$('#who').value.trim(),why=$('#why').value.trim(),pun=$('#punishment').value.trim();if(!who||!why||!pun){note('Заповніть усі три поля');return}setN(n()+1);show(casting);$('#castingText').textContent=who+' — ритуал уже запущено…';setTimeout(()=>{$('#certWho').textContent=who;$('#certWhy').textContent=why;$('#certPunishment').textContent=pun;$('#certNumber').textContent='PX-'+Date.now().toString().slice(-8);show(certificate)},3300)};
+  $('#ritualForm').onsubmit=e=>{e.preventDefault();const who=$('#who').value.trim(),why=$('#why').value.trim(),pun=$('#punishment').value.trim();if(!who||!why||!pun){note('Заповніть усі три поля');return}setN(n()+1);show(casting);$('#castingText').textContent=who+' — ритуал уже запущено…';const bar=document.querySelector('.castingBar i');if(bar){bar.style.animation='none';void bar.offsetWidth;bar.style.animation='castProgress 3.2s linear forwards'}setTimeout(()=>{const num='PX-'+Date.now().toString().slice(-8);$('#certWho').textContent=who;$('#certWhy').textContent=why;$('#certPunishment').textContent=pun;$('#certNumber').textContent=num;try{localStorage.setItem('lastCertificate',JSON.stringify({who,why,pun,num}))}catch(e){}show(certificate)},3300)};
   menu.onclick=()=>{drawer.classList.toggle('open');shade.classList.toggle('open')};shade.onclick=close;
   document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>show(b.dataset.go==='home'?home:ritual));
   $('#again').onclick=()=>show(ritual);
   $('#undoCurse').onclick=()=>{show(home);note('Прокляття скасовано')};
   $('#shareCert').onclick=async()=>{const text='Прокляття Онлайн — сертифікат № '+$('#certNumber').textContent;try{if(navigator.share)await navigator.share({title:'Прокляття Онлайн',text,url:location.href});else{await navigator.clipboard.writeText(text+' '+location.href);note('Посилання скопійовано')}}catch(e){}};
+  $('#saveCert').onclick=()=>{const c=document.createElement('canvas');c.width=1080;c.height=1350;const x=c.getContext('2d');x.fillStyle='#060606';x.fillRect(0,0,c.width,c.height);const g=x.createRadialGradient(540,160,20,540,320,620);g.addColorStop(0,'#3a0d10');g.addColorStop(1,'#060606');x.fillStyle=g;x.fillRect(0,0,c.width,c.height);x.strokeStyle='#6a2528';x.lineWidth=3;x.strokeRect(70,70,940,1210);x.textAlign='center';x.fillStyle='#ef3136';x.font='bold 110px Arial';x.fillText('✦',540,220);x.fillStyle='#aaa';x.font='24px Arial';x.fillText('ЦИФРОВИЙ СЕРТИФІКАТ',540,280);x.fillStyle='#fff';x.font='bold 58px Arial';x.fillText('ПРОКЛЯТТЯ НАКЛАДЕНО',540,370);const lines=[['КОГО',$('#certWho').textContent],['ПРИЧИНА',$('#certWhy').textContent],['КАРА',$('#certPunishment').textContent]];let y=470;for(const [k,v] of lines){x.textAlign='left';x.fillStyle='#8d8d91';x.font='20px Arial';x.fillText(k,120,y);x.fillStyle='#fff';x.font='bold 32px Arial';wrapText(x,v,120,y+44,840,42);y+=220}x.textAlign='center';x.fillStyle='#8d8d91';x.font='24px Arial';x.fillText('№ '+$('#certNumber').textContent,540,1190);c.toBlob(blob=>{if(!blob)return;const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='prokliattia-'+$('#certNumber').textContent+'.png';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1500)},'image/png')};
+  function wrapText(x,text,left,top,maxWidth,lineHeight){const words=(text||'').split(/\s+/);let line='';let y=top;for(const word of words){const test=line?line+' '+word:word;if(x.measureText(test).width>maxWidth&&line){x.fillText(line,left,y);line=word;y+=lineHeight}else line=test}if(line)x.fillText(line,left,y)};
 
   function setEnergy(){
     energy=+range.value/100;
@@ -29,6 +32,8 @@
     stage.style.setProperty('--burn',burn.toFixed(3));
     stage.style.setProperty('--energy',energy.toFixed(3));
     range.style.setProperty('--energy',energy.toFixed(3));
+    const ev=$('#energyValue');if(ev)ev.textContent=Math.round(energy*100)+'%';
+    try{localStorage.setItem('curseEnergy',String(Math.round(energy*100)))}catch(e){}
     if(video){
       video.playbackRate=.60+burn*1.05;
       if(burn<.015){video.pause();try{video.currentTime=0}catch(e){}}
