@@ -2,7 +2,7 @@
   const $=s=>document.querySelector(s);
   const home=$('#home'),ritual=$('#ritual'),casting=$('#casting'),certificate=$('#certificate');
   const drawer=$('#drawer'),shade=$('#shade'),menu=$('#menuToggle');
-  const count=$('#count'),range=$('#range'),stage=$('#fireStage'),toast=$('#toast');
+  const count=$('#count'),stage=$('#fireStage'),toast=$('#toast');
 
   const punishments=[
     'Щоб Wi-Fi ловив тільки біля роутера',
@@ -22,17 +22,30 @@
     const saved=parseInt(localStorage.getItem('curseCount')||'',10);
     if(saved>4351)setN(saved);
     const e=Number(localStorage.getItem('curseEnergy'));
-    if(Number.isFinite(e)&&e>=0&&e<=100)range.value=String(e);
+    if(Number.isFinite(e)&&e>=0&&e<=100)stage.dataset.energy=String(e);
   }catch(e){}
 
-  function setEnergy(){
-    const energy=+range.value/100;
-    stage.style.setProperty('--energy',energy.toFixed(3));
-    try{localStorage.setItem('curseEnergy',String(Math.round(energy*100)))}catch(e){}
+  let energy=62;
+  try{
+    const saved=Number(localStorage.getItem('curseEnergy'));
+    if(Number.isFinite(saved)&&saved>=0&&saved<=100)energy=saved;
+  }catch(e){}
+  function setEnergy(v){
+    energy=Math.max(0,Math.min(100,v));
+    stage.style.setProperty('--energy',(energy/100).toFixed(3));
+    try{localStorage.setItem('curseEnergy',String(Math.round(energy)))}catch(e){}
   }
 
   $('#goRitual').onclick=()=>show(ritual);
-  $('#addEnergy').onclick=()=>{range.value=Math.min(100,+range.value+12);setEnergy();setN(n()+1);note('Енергію підкинуто')};
+  $('#addEnergy').onclick=()=>{
+    setEnergy(Math.min(100,energy+12));
+    setN(n()+1);
+    stage.animate(
+      [{transform:'scale(1)'},{transform:'scale(1.045)'},{transform:'scale(1)'}],
+      {duration:520,easing:'cubic-bezier(.2,.8,.2,1)'}
+    );
+    note('Енергію підкинуто');
+  };
   $('#random').onclick=()=>$('#punishment').value=punishments[Math.floor(Math.random()*punishments.length)];
 
   $('#ritualForm').onsubmit=e=>{
@@ -89,6 +102,7 @@
     c.toBlob(blob=>{if(!blob)return;const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='prokliattia-'+$('#certNumber').textContent+'.png';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1500)},'image/png')
   };
 
-  range.oninput=setEnergy;
-  setEnergy();
+  const acceptCookies=$('#acceptCookies');
+  if(acceptCookies)acceptCookies.onclick=()=>$('#cookieBar').classList.add('hidden');
+  setEnergy(energy);
 })();
