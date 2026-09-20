@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Прокляття онлайн</title>
+<link rel="stylesheet" href="../styles.css?v=refcopy1">
+</head>
+<body>
+<button class="menu-btn" aria-label="Меню"><span></span><span></span><span></span></button>
+
+<main class="page ritual-page">
+  <section class="ritual-card">
+    <div class="title-line">
+      <h1>ПРОКЛЯТТЯ ОНЛАЙН</h1>
+      <img class="fish" src="https://fineo.site/dahvjukwfm8/_assets/media/d6eb382ff762052dae89b02ffc9b3a9e.svg" alt="">
+    </div>
+    <p class="subtitle ritual-subtitle">Введіть імʼя, причину і покарання</p>
+
+    <form id="curseForm">
+      <label>
+        <span>Кого проклинаємо?</span>
+        <input required>
+      </label>
+      <label>
+        <span>Що вона(він) зробила(в)?</span>
+        <input required>
+      </label>
+      <label>
+        <span>Яка кара?</span>
+        <div class="input-with-icon">
+          <input id="punishment" required>
+          <button type="button" id="randomize" aria-label="Випадкова кара">↻</button>
+        </div>
+      </label>
+
+      <button class="cta primary submit" type="submit">Проклясти</button>
+    </form>
+
+    <div class="smoke-visual">
+      <video autoplay muted loop playsinline poster="https://fineo.site/dahvjukwfm8/_assets/video/0f14d872b22e36878c5048afdc04281b.jpg">
+        <source src="https://fineo.site/dahvjukwfm8/_assets/video/0ef4cf852ea2968efd0f0c154ca03abc.mp4" type="video/mp4">
+      </video>
+    </div>
+  </section>
+</main>
+
+<script>
+const punishments=['Щоб Wi-Fi ловив тільки біля роутера','Щоб кава завжди остигала занадто швидко','Щоб зарядка зникала саме коли потрібна'];
+document.getElementById('randomize').onclick=()=>document.getElementById('punishment').value=punishments[Math.floor(Math.random()*punishments.length)];
+document.getElementById('curseForm').onsubmit=e=>{e.preventDefault();};
+</script>
+</body>
+</html>
