@@ -18,21 +18,23 @@ a{text-decoration:none;color:inherit}
 .secondary{background:linear-gradient(180deg,#73767b,#54565b);border:3px solid #d2d2d4;color:#fff}
 .counter{margin:18px 0 20px;font-weight:700}
 .pentagram-wrap{
-  width:min(540px,95vw);
+  width:min(560px,92vw);
   aspect-ratio:1/1;
-  margin:10px auto 0;
+  margin:18px auto 0;
   overflow:hidden;
   background:#000;
-  display:flex;
-  align-items:center;
-  justify-content:center
+  display:grid;
+  place-items:center;
+  position:relative;
 }
 .pentagram-video{
   display:block;
   width:100%;
   height:100%;
   object-fit:contain;
-  background:#000
+  object-position:center center;
+  background:#000;
+  margin:auto;
 }
 
 .cookie{position:fixed;z-index:25;left:50%;bottom:18px;transform:translateX(-50%);width:min(700px,calc(100% - 28px));display:flex;gap:20px;align-items:center;padding:15px 16px 15px 22px;border:1px solid #7c7d81;border-radius:28px;background:rgba(75,76,80,.96);box-shadow:0 12px 35px rgba(0,0,0,.55)}
@@ -55,13 +57,13 @@ a{text-decoration:none;color:inherit}
 .input-with-icon button{position:absolute;right:18px;top:50%;transform:translateY(-50%);width:58px;height:58px;border:0;background:transparent;color:#fff;font-size:44px;line-height:1;cursor:pointer}
 .submit{margin-top:36px}
 .smoke-visual{
-  width:min(900px,100%);
-  margin:26px auto 0;
+  width:min(900px,92vw);
+  margin:28px auto 0;
   overflow:hidden;
   background:#000;
-  display:flex;
-  align-items:center;
-  justify-content:center
+  display:grid;
+  place-items:center;
+  position:relative;
 }
 .smoke-video{
   display:block;
@@ -69,8 +71,9 @@ a{text-decoration:none;color:inherit}
   height:auto;
   max-height:62vh;
   object-fit:contain;
-  object-position:center top;
-  background:#000
+  object-position:center center;
+  background:#000;
+  margin:auto;
 }
 
 @media(max-width:620px){
@@ -106,4 +109,81 @@ a{text-decoration:none;color:inherit}
   .ritual-card{width:min(820px,100%)}
   .smoke-visual{width:min(820px,72vw)}
   .smoke-video{max-height:55vh}
+}
+
+/* final centering + responsive media pass */
+.home-card,
+.ritual-card{
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.pentagram-wrap,
+.smoke-visual{
+  left:auto !important;
+  right:auto !important;
+  transform:none !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+}
+
+@media(max-width:620px){
+  .home-page{padding-left:16px;padding-right:16px}
+  .home-card{width:100%;max-width:430px}
+  .pentagram-wrap{
+    width:min(100%,390px) !important;
+    max-width:390px !important;
+    aspect-ratio:1/1;
+    margin:14px auto 0 !important;
+  }
+  .pentagram-video{
+    width:100% !important;
+    height:100% !important;
+    object-fit:contain !important;
+    object-position:center center !important;
+  }
+
+  .ritual-page{padding-left:16px;padding-right:16px}
+  .ritual-card{width:100%;max-width:430px}
+  .smoke-visual{
+    width:min(100%,430px) !important;
+    max-width:430px !important;
+    margin:18px auto 0 !important;
+    max-height:none !important;
+  }
+  .smoke-video{
+    width:100% !important;
+    height:auto !important;
+    max-height:48vh !important;
+    object-fit:contain !important;
+    object-position:center center !important;
+  }
+}
+
+@media(min-width:621px) and (max-width:1100px){
+  .home-card{max-width:620px}
+  .pentagram-wrap{
+    width:min(500px,70vw) !important;
+    margin:18px auto 0 !important;
+  }
+  .ritual-card{max-width:720px}
+  .smoke-visual{
+    width:min(720px,82vw) !important;
+    margin:24px auto 0 !important;
+  }
+  .smoke-video{max-height:56vh !important}
+}
+
+@media(min-width:1101px){
+  .home-card{max-width:620px}
+  .pentagram-wrap{
+    width:520px !important;
+    margin:18px auto 0 !important;
+  }
+  .ritual-card{max-width:820px}
+  .smoke-visual{
+    width:min(820px,68vw) !important;
+    margin:28px auto 0 !important;
+  }
+  .smoke-video{max-height:54vh !important}
 }
