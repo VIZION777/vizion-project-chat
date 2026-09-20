@@ -1,118 +1,41 @@
 <!doctype html>
 <html lang="uk">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#000000">
-  <title>Прокляття Онлайн</title>
-  <link rel="stylesheet" href="./styles.css?v=30">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Прокляття онлайн</title>
+<link rel="stylesheet" href="./styles.css?v=refcopy1">
 </head>
 <body>
-<main class="app">
+<button class="menu-btn" aria-label="Меню"><span></span><span></span><span></span></button>
 
-  <button class="hamburger" id="menuToggle" type="button" aria-label="Меню" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
+<main class="page home-page">
+  <section class="home-card">
+    <h1>ПРОКЛЯТТЯ ОНЛАЙН</h1>
+    <p class="subtitle">Одне натискання — і всесвіт усе владнає!</p>
 
-  <div class="shade" id="shade"></div>
-  <aside class="drawer" id="drawer" aria-hidden="true">
-    <button data-go="home" type="button">Головна</button>
-    <button data-go="ritual" type="button">Проклясти</button>
-  </aside>
+    <a class="cta primary" href="./page-2/">Проклясти</a>
+    <button class="cta secondary" id="cleanBtn" type="button">Очистити совість</button>
 
-  <section id="home" class="screen active home">
-    <div class="homeInner">
-      <h1>ПРОКЛЯТТЯ ОНЛАЙН</h1>
-      <p class="subtitle">Одне натискання — і всесвіт усе владнає!</p>
+    <p class="counter">Накладено проклять: <strong>4 351</strong></p>
 
-      <button class="pill red" id="goRitual" type="button">Проклясти</button>
-      <button class="pill gray" id="addEnergy" type="button">Підкинути енергію</button>
-
-      <p class="count">Накладено заклять: <b id="count">4 351</b></p>
-
-      <div class="fireStage" id="fireStage" aria-label="Вогняна пентаграма">
-        <div class="fireAura" aria-hidden="true"></div>
-        <img id="fireImage" class="fireImage" src="./assets/fire-reference.jpg" alt="Вогняна пентаграма">
-      </div>
+    <div class="pentagram-wrap" aria-hidden="true">
+      <img src="https://fineo.site/dahvjukwfm8/_assets/video/071f4923474dff2f0fa8870aa3406148.jpg" alt="">
     </div>
   </section>
-
-  <section id="ritual" class="screen ritual">
-    <div class="ritualInner">
-      <div class="formCol">
-        <h2>ПРОКЛЯТТЯ ОНЛАЙН</h2>
-        <p class="ritualSub">Введіть імʼя, причину і покарання</p>
-
-        <form id="ritualForm" autocomplete="off">
-          <label>
-            <span>Кого проклинаємо?</span>
-            <input id="who" maxlength="80">
-          </label>
-
-          <label>
-            <span>Що вона(він) зробила(в)?</span>
-            <input id="why" maxlength="140">
-          </label>
-
-          <label>
-            <span>Яка кара?</span>
-            <div class="randomWrap">
-              <input id="punishment" maxlength="140">
-              <button id="random" type="button" aria-label="Випадкова кара">↻</button>
-            </div>
-          </label>
-
-          <button class="submit" type="submit">Проклясти</button>
-        </form>
-      </div>
-
-      <div class="potCol">
-        <img class="pot" src="./assets/cauldron-reference.jpg" alt="">
-      </div>
-    </div>
-  </section>
-
-  <section id="casting" class="screen casting">
-    <div class="castingInner">
-      <div class="spellRing">✦</div>
-      <h2>ЗАКЛЯТТЯ НАКЛАДАЄТЬСЯ</h2>
-      <p id="castingText">Всесвіт уже отримав запит…</p>
-      <div class="castingBar"><i></i></div>
-    </div>
-  </section>
-
-  <section id="certificate" class="screen certificate">
-    <div class="certWrap">
-      <div class="certCard">
-        <div class="certSigil">✦</div>
-        <p class="certKicker">ЦИФРОВИЙ СЕРТИФІКАТ</p>
-        <h2>ПРОКЛЯТТЯ НАКЛАДЕНО</h2>
-        <div class="certLine"><span>Кого:</span><b id="certWho"></b></div>
-        <div class="certLine"><span>Причина:</span><b id="certWhy"></b></div>
-        <div class="certLine"><span>Кара:</span><b id="certPunishment"></b></div>
-        <p class="certNo">№ <b id="certNumber"></b></p>
-      </div>
-
-      <div class="certActions">
-        <button class="pill red" id="shareCert" type="button">Поділитися</button>
-        <button class="pill gray" id="saveCert" type="button">Зберегти сертифікат</button>
-        <button class="pill gray" id="again" type="button">Ще одне прокляття</button>
-        <button class="undo" id="undoCurse" type="button">Скасувати прокляття</button>
-      </div>
-    </div>
-  </section>
-
-  <div class="cookieBar" id="cookieBar">
-    <div class="cookieText">
-      <strong>МАГІЧНІ КРИХТИ ТА СЛІДИ</strong>
-      <span>Ми підсипаємо вам трохи кукі, щоб закляття долітали точно в ціль, а сайт не перетворився на гарбуз. Якщо ви тут — отже, дали згоду на цифровий шабаш.</span>
-    </div>
-    <button id="acceptCookies" type="button">Прийняти</button>
-  </div>
-
-  <div class="toast" id="toast"></div>
 </main>
 
-<script src="./script.js?v=30"></script>
+<div class="cookie" id="cookie">
+  <div>
+    <b>МАГІЧНІ КРИХТИ</b>
+    <p>Ми використовуємо їх, щоб сайт пам’ятав твої прокляття і не забував закон балансу. Душу не забираємо — лише технічні байти.</p>
+  </div>
+  <button id="acceptCookie">Прийняти неминуче</button>
+</div>
+
+<script>
+document.getElementById('acceptCookie').onclick=()=>document.getElementById('cookie').remove();
+document.getElementById('cleanBtn').onclick=()=>alert('Совість очищено настільки, наскільки це технічно можливо.');
+</script>
 </body>
 </html>
