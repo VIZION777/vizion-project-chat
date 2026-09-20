@@ -30,12 +30,10 @@
 
       <p class="count">Накладено заклять: <b id="count">4 351</b></p>
 
-      <div class="fireStage" id="fireStage">
-        <div class="fireGlow" aria-hidden="true"></div>
-        <img id="fireImage" class="fireImage" src="./assets/fire-reference.jpg" alt="">
+      <div class="fireStage" id="fireStage" aria-label="Вогняна пентаграма">
+        <div class="fireAura" aria-hidden="true"></div>
+        <img id="fireImage" class="fireImage" src="./assets/fire-reference.jpg" alt="Вогняна пентаграма">
       </div>
-
-      <input class="range" id="range" type="range" min="0" max="100" value="62" aria-label="Енергія">
     </div>
   </section>
 
@@ -103,6 +101,14 @@
       </div>
     </div>
   </section>
+
+  <div class="cookieBar" id="cookieBar">
+    <div class="cookieText">
+      <strong>МАГІЧНІ КРИХТИ ТА СЛІДИ</strong>
+      <span>Ми підсипаємо вам трохи кукі, щоб закляття долітали точно в ціль, а сайт не перетворився на гарбуз. Якщо ви тут — отже, дали згоду на цифровий шабаш.</span>
+    </div>
+    <button id="acceptCookies" type="button">Прийняти</button>
+  </div>
 
   <div class="toast" id="toast"></div>
 </main>
