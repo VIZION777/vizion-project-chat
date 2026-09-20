@@ -35,3 +35,58 @@
 .certLine b{overflow-wrap:anywhere}.certActions .pill{margin-bottom:12px}
 @media(max-width:620px){.energyLabel{width:88%;margin:2px auto 11px}.home{padding-bottom:max(34px,env(safe-area-inset-bottom))}.certificate{padding-bottom:max(30px,env(safe-area-inset-bottom))}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
+
+
+/* Center the smoke/cauldron visual on the second page */
+.ritualInner{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+  gap:32px;
+}
+.formCol{
+  width:min(575px,100%);
+  max-width:575px;
+  margin:0 auto;
+  justify-self:auto;
+}
+.potCol{
+  width:min(680px,100%);
+  margin:22px auto 0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.pot{
+  display:block;
+  width:min(610px,100%);
+  margin:0 auto;
+}
+
+@media(max-width:980px){
+  .ritualInner{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+  .potCol{
+    width:min(670px,100%);
+    margin:30px auto 0;
+    justify-content:center;
+  }
+}
+
+@media(max-width:620px){
+  .potCol{
+    width:100%;
+    margin:20px auto 0;
+    transform:none;
+  }
+  .pot{
+    width:min(112vw,620px);
+    max-width:none;
+    margin-left:auto;
+    margin-right:auto;
+  }
+}
