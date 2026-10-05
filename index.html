@@ -1,44 +1,66 @@
 <!doctype html>
 <html lang="uk">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Прокляття онлайн</title>
-<link rel="stylesheet" href="./styles.css?v=refcopy1">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="theme-color" content="#090909"/>
+  <title>VIZION — Digital Experiences by NM Kasper</title>
+  <meta name="description" content="VIZION створює авторські сайти, digital experiences та інтерактивні веб-продукти для брендів."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
-<button class="menu-btn" aria-label="Меню"><span></span><span></span><span></span></button>
+  <div class="grain"></div>
+  <header class="nav">
+    <a class="brand" href="#top">
+      <svg viewBox="0 0 72 48" fill="none" aria-hidden="true"><rect x="1" y="1" width="70" height="46" rx="11"/><path d="M9 24C17 12.5 26 7.8 36 7.8S55 12.5 63 24C55 35.5 46 40.2 36 40.2S17 35.5 9 24Z"/><circle cx="36" cy="24" r="7.2"/></svg>
+      <span>VIZION<small>BY NM KASPER</small></span>
+    </a>
+    <nav><a href="catalog.html">CATALOG / 30</a><a href="#about">ABOUT</a><a href="https://t.me/kaspertt77" target="_blank" rel="noreferrer">ORDER ↗</a></nav>
+  </header>
 
-<main class="page home-page">
-  <section class="home-card">
-    <h1>ПРОКЛЯТТЯ ОНЛАЙН</h1>
-    <p class="subtitle">Одне натискання — і всесвіт усе владнає!</p>
+  <main id="top">
+    <section class="hero">
+      <canvas id="heroCanvas" aria-hidden="true"></canvas>
+      <div class="hero-grid"></div>
+      <div class="hero-copy">
+        <span class="eyebrow">DIGITAL ART / WEB / INTERACTION</span>
+        <h1><span>VIZ</span><span>ION</span></h1>
+        <div class="hero-bottom">
+          <p>Ми не збираємо сайти з блоків. Ми режисуємо цифровий простір — від першого руху до останнього кліку.</p>
+          <a class="pill primary" href="catalog.html">ВІДКРИТИ КАТАЛОГ <b>↗</b></a>
+        </div>
+      </div>
+      <div class="side left">NM KASPER / 2026</div>
+      <div class="side right">SCROLL = DIRECTION</div>
+      <a href="#statement" class="scroll-cue">SCROLL <i></i></a>
+    </section>
 
-    <a class="cta primary" href="./page-2/">Проклясти</a>
-    <button class="cta secondary" id="cleanBtn" type="button">Очистити совість</button>
+    <section class="statement" id="statement">
+      <div class="label">00 / MANIFESTO</div>
+      <p>Сайт має не просто <i>виглядати</i> дорого. Він має <b>поводитись</b> дорого.</p>
+    </section>
 
-    <p class="counter">Накладено проклять: <strong>4 351</strong></p>
+    <section class="worlds" id="about">
+      <div class="world world-a">
+        <div class="world-media"><img src="https://images.unsplash.com/photo-1504215680853-026ed2a45def?auto=format&fit=crop&w=1800&q=88" alt="Automotive concept"/></div>
+        <div class="world-copy"><span>01 / AUTOMOTIVE</span><h2>Рух як<br/>матеріал.</h2><p>Композиція не стоїть. Вона реагує на людину, змінює масштаб і веде погляд.</p></div>
+      </div>
+      <div class="world world-b">
+        <div class="world-copy"><span>02 / ARCHITECTURE</span><h2>Простір<br/>в екрані.</h2><p>Масштаб, тиша й точність. Жодної випадкової паузи, жодного пустого скролу.</p></div>
+        <div class="world-media"><img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1800&q=88" alt="Architecture concept"/></div>
+      </div>
+    </section>
 
-    <div class="pentagram-wrap" aria-hidden="true">
-      <video class="pentagram-video" autoplay muted loop playsinline preload="auto"
-        poster="https://prokliattia-online.vizion-2636.chatgpt.site/assets/pentagram-poster.webp">
-        <source src="https://prokliattia-online.vizion-2636.chatgpt.site/assets/pentagram-effects.mp4" type="video/mp4">
-      </video>
-    </div>
-  </section>
-</main>
+    <section class="gateway">
+      <div class="gateway-number"><span>LIVE ARCHIVE</span><strong>30</strong><p>повних сайтів у різних нішах</p></div>
+      <a href="catalog.html"><span>УВІЙТИ В<br/>КАТАЛОГ</span><b>↗</b></a>
+    </section>
+  </main>
 
-<div class="cookie" id="cookie">
-  <div>
-    <b>МАГІЧНІ КРИХТИ</b>
-    <p>Ми використовуємо їх, щоб сайт пам’ятав твої прокляття і не забував закон балансу. Душу не забираємо — лише технічні байти.</p>
-  </div>
-  <button id="acceptCookie">Прийняти неминуче</button>
-</div>
-
-<script>
-document.getElementById('acceptCookie').onclick=()=>document.getElementById('cookie').remove();
-document.getElementById('cleanBtn').onclick=()=>alert('Совість очищено настільки, наскільки це технічно можливо.');
-</script>
+  <footer><span>VIZION BY NM KASPER</span><span>DIGITAL ART / DESIGN / CODE</span><a href="https://t.me/kaspertt77" target="_blank" rel="noreferrer">START A PROJECT ↗</a></footer>
+  <script src="script.js"></script>
 </body>
 </html>
