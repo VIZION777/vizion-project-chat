@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /demo/
+Disallow: /order
+Disallow: /builder
+
+Sitemap: https://vizionworkspace.com/sitemap.xml
