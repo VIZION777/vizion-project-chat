@@ -1,0 +1,3 @@
+/catalog /index.html#catalog 302
+/work/:slug /work.html?project=:slug 200
+/about /about.html 200
